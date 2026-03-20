@@ -7,13 +7,11 @@ import CartPage from './CartPage'
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState('/')
-  const [theme, setTheme] = useState('light')
-
-  const effectiveTheme = (currentRoute === '/' || currentRoute === '/testimonials') ? 'dark' : theme;
+  const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', effectiveTheme)
-  }, [effectiveTheme])
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light')

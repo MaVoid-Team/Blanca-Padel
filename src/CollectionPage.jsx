@@ -9,7 +9,7 @@ const collections = [
 
 export default function CollectionPage({ navigate }) {
   return (
-    <div className="section container" style={{ paddingTop: '160px', minHeight: '100vh', background: '#FFFFFF' }}>
+    <div className="section container page-container" style={{ backgroundColor: 'var(--background-color)' }}>
       <header style={{ marginBottom: '80px' }}>
         <h1 className="title-display">The Collection</h1>
         <p className="text-subtitle">MINIMAL. POWERFUL. INTENTIONAL.</p>
@@ -25,19 +25,20 @@ export default function CollectionPage({ navigate }) {
       <div className="collection-grid">
         {collections.map(item => (
           <div key={item.id} className="product-card-unit" onClick={() => navigate('/product')} style={{ cursor: 'pointer' }}>
-            <div className="product-image-card" style={{ backgroundColor: item.bgcolor }}>
+            <div className="product-image-card" style={{ backgroundColor: 'var(--surface-color)', border: '1px solid rgba(255,255,255,0.05)' }}>
                {item.name === 'Del Mar' ? (
                  <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ 
                       fontFamily: 'serif', 
                       fontSize: '64px', 
-                      color: 'white', 
+                      color: 'var(--text-primary)', 
                       fontWeight: 300,
-                      fontStyle: 'italic'
+                      fontStyle: 'italic',
+                      opacity: 0.5
                     }}>Del Mar</span>
                  </div>
                ) : (
-                 <img src={item.image} alt={item.name} style={{ mixBlendMode: 'multiply' }} />
+                 <img src={item.image} alt={item.name} style={{ mixBlendMode: 'normal' }} />
                )}
             </div>
             
@@ -48,7 +49,7 @@ export default function CollectionPage({ navigate }) {
               </div>
               
               <div className="view-details-btn">
-                <span>View Details</span>
+                <span style={{ color: 'var(--text-primary)' }}>View Details</span>
                 <div className="arrow-circle">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
