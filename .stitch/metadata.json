@@ -1,0 +1,22 @@
+{
+  "projectId": "6361254761406381039",
+  "title": "Blanca Padel",
+  "deviceType": "DESKTOP",
+  "screens": {
+    "homepage": {
+      "id": "493b3aed12e946a2ba3b457e7d1dd419"
+    },
+    "collection": {
+      "id": "b1ba55ab2efc45dfa023cb355d560725"
+    },
+    "product": {
+      "id": "909de42175f64e8e9eefc36a1aefd740"
+    },
+    "testimonials": {
+      "id": "eea552e6fe9140429b7ee3746471d505"
+    },
+    "cart": {
+      "id": "10fafb978ff64065b717f7188ca6a6d0"
+    }
+  }
+}
