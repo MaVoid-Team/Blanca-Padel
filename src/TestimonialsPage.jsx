@@ -6,21 +6,21 @@ const testimonials = [
     quote: "Amazing customer service, fantastic paddle. I've tried many brands, but the precision and touch of the La Jolla is unmatched. It feels like an extension of my arm.",
     name: "Jake T.",
     location: "Del Mar, CA",
-    image: "https://images.unsplash.com/photo-1542144612-1b3641ec3459?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=240&q=80"
   },
   {
     id: 2,
     quote: "The Manhattan gives me exactly what I need on the court. Ultimate power without sacrificing the sweet spot. Incredible design and top-tier build quality.",
     name: "Sarah L.",
     location: "Miami, FL",
-    image: "https://images.unsplash.com/photo-1554342876-0ebcaecbed10?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=240&q=80"
   },
   {
     id: 3,
     quote: "Beautiful, cohesive aesthetics and a matte finish that turns heads. The performance speaks for itself. Highly recommended for anyone taking their game seriously.",
     name: "Marcus P.",
     location: "Austin, TX",
-    image: "https://images.unsplash.com/photo-1583152288593-df767f4078c1?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=240&q=80"
   }
 ]
 
@@ -31,13 +31,13 @@ export default function TestimonialsPage() {
        {/* Dark Mode Override logic handled directly inline for safety or via global CSS */}
        
        <header style={{ textAlign: 'center', marginBottom: '100px' }}>
-          <h1 className="title-display" style={{ fontSize: '72px', color: '#FFFFFF' }}>See what our players think.</h1>
+          <h1 className="title-display" style={{ color: '#FFFFFF' }}>See what our players think.</h1>
           <p className="text-subtitle" style={{ color: '#888888', marginTop: '24px', fontSize: '16px' }}>
              Don't just take our word for it. Our community shares their experience.
           </p>
        </header>
        
-       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+         <div className="testimonials-grid">
          {testimonials.map(item => (
            <div key={item.id} style={{
                backgroundColor: '#111111', 
@@ -82,3 +82,4 @@ export default function TestimonialsPage() {
     </div>
   )
 }
+

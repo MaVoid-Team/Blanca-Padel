@@ -7,71 +7,114 @@ import CartPage from './CartPage'
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState('/')
-  const [theme, setTheme] = useState('dark')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-  }, [theme])
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light')
-  }
+    document.documentElement.setAttribute('data-theme', 'dark')
+  }, [])
 
   const navigate = (path) => {
     setCurrentRoute(path)
+    setIsMobileMenuOpen(false)
     window.scrollTo(0, 0)
   }
 
   return (
     <>
-      {currentRoute !== '/' && (
-        <header className="header">
+      <header className="header unified-header">
           <div className="container header-content">
-            <a href="#" className="logo" onClick={(e) => { e.preventDefault(); navigate('/'); }}>Blanca.</a>
+            <a href="#" className="logo unified-logo" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M3 12c0-4.2 3.8-7 9-7s9 2.8 9 7-3.8 7-9 7-9-2.8-9-7z"></path>
+                <line x1="4" y1="4" x2="20" y2="20"></line>
+              </svg>
+              <span>BLANCA</span>
+            </a>
           
-          <nav className="nav-links">
+          <button 
+            className="hamburger-btn" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {isMobileMenuOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </>
+              )}
+            </svg>
+          </button>
+
+          <nav className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <a 
               href="#" 
               className={`nav-link ${currentRoute === '/collection' || currentRoute === '/product' ? 'active' : ''}`}
               onClick={(e) => { e.preventDefault(); navigate('/collection'); }}
             >
-              Collection
+              Racquets
             </a>
             <a 
               href="#" 
-              className={`nav-link ${currentRoute === '/testimonials' ? 'active' : ''}`}
-              onClick={(e) => { e.preventDefault(); navigate('/testimonials'); }}
+              className="nav-link"
+              onClick={(e) => { e.preventDefault(); navigate('/collection'); }}
             >
-              Testimonials
+              Bundles
+            </a>
+            <a 
+              href="#" 
+              className="nav-link"
+              onClick={(e) => { e.preventDefault(); }}
+            >
+              Accessories
+            </a>
+            <a 
+              href="#" 
+              className="nav-link"
+              onClick={(e) => { e.preventDefault(); }}
+            >
+              Apparel
+            </a>
+            <a 
+              href="#" 
+              className="nav-link"
+              onClick={(e) => { e.preventDefault(); }}
+            >
+              Trial our gear
             </a>
             <a 
               href="#" 
               className="nav-link"
               onClick={(e) => { e.preventDefault(); navigate('/'); }}
             >
-              About
+              About us
+            </a>
+            <a 
+              href="#" 
+              className={`nav-link ${currentRoute === '/testimonials' ? 'active' : ''}`}
+              onClick={(e) => { e.preventDefault(); navigate('/testimonials'); }}
+            >
+              Players
             </a>
           </nav>
           
           <div className="nav-icons">
-             <button className="icon-btn" onClick={toggleTheme} title="Toggle Theme">
-               {theme === 'light' ? (
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-               ) : (
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-               )}
-             </button>
-             <button className="icon-btn">
+             <button className="icon-btn nav-icon-box">
                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
              </button>
-             <button className="icon-btn" onClick={(e) => { navigate('/cart'); }}>
+             <button className="icon-btn nav-icon-box" onClick={(e) => { navigate('/cart'); }}>
                {/* Minimalist Cart Icon */}
                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
              </button>
           </div>
           </div>
         </header>
-      )}
 
       <main>
         {currentRoute === '/' && <HomePage navigate={navigate} />}

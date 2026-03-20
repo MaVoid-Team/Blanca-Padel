@@ -1,45 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const allRacquets = [
-  { id: 1, name: 'La Jolla', image: '/padel_racquet.png', desc: 'High end flat profile tear drop... advanced performance and an incredibly balanced weight...' },
-  { id: 2, name: 'Manhattan', image: '/padel_racquet.png', desc: 'Our high-end and powerful diamond profile racquet. Phenomenal feel, exceptional...' },
-  { id: 3, name: 'Malibu', image: '/padel_racquet.png', desc: 'Designed for control and precision with a rounded profile...' }
+  { id: 1, name: 'La Jolla', image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=900&q=80', desc: 'High end flat profile tear drop... advanced performance and an incredibly balanced weight...' },
+  { id: 2, name: 'Manhattan', image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80', desc: 'Our high-end and powerful diamond profile racquet. Phenomenal feel, exceptional...' },
+  { id: 3, name: 'Malibu', image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80', desc: 'Designed for control and precision with a rounded profile...' }
 ]
 
 export default function HomePage({ navigate }) {
-  
-  // Force dark theme on mount for this specific page if desired, or let the CSS handle specific dark overrides
-  // For pixel perfect, let's enforce a .homepage-dark wrapper
-  
   return (
     <div className="homepage-dark">
-      {/* Absolute dark header replacement since this page demands dark header */}
-      <header className="header dark-header">
-        <div className="container header-content">
-          <a href="#" className="logo" onClick={(e) => { e.preventDefault(); navigate('/'); }} style={{color: 'white', letterSpacing: '2px', fontSize: '18px'}}>BLANCA</a>
-          
-          <nav className="nav-links desktop-nav">
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('/collection'); }}>Racquets</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('/collection'); }}>Bundles</a>
-            <a href="#">Accessories</a>
-            <a href="#">Apparel</a>
-            <a href="#">Trial run gear</a>
-            <a href="#">Manifesto</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('/testimonials'); }}>Players</a>
-          </nav>
-          
-          <div className="nav-icons">
-             <button className="icon-btn light-icon">
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-             </button>
-             <button className="icon-btn light-icon" onClick={(e) => { navigate('/cart'); }} style={{ position: 'relative' }}>
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-               <span className="cart-badge">0</span>
-             </button>
-          </div>
-        </div>
-      </header>
-
       <section className="hp-hero">
         <div className="container hp-hero-container">
           <div className="hp-hero-content">
@@ -54,7 +23,14 @@ export default function HomePage({ navigate }) {
               </div>
             </button>
           </div>
-          <img src="/padel_hero.png" alt="Blanca Racquet" className="hp-hero-img" />
+          <div className="hp-hero-media">
+            <img
+              src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1400&q=80"
+              alt="Padel racquet on court"
+              className="hp-hero-img"
+              loading="eager"
+            />
+          </div>
         </div>
       </section>
 
@@ -91,9 +67,9 @@ export default function HomePage({ navigate }) {
                <h3>Join the Blanca<br/>Padel Social Club</h3>
                <p style={{fontSize: '12px', color: '#999', marginBottom: '16px'}}>Follow our Instagram feed @blanca.padel.</p>
                <div className="hp-social-images">
-                 <img src="/padel_racquet.png" alt="ig1" />
-                 <img src="https://images.unsplash.com/photo-1626245366964-e40f8987d605?auto=format&fit=crop&q=80" alt="ig2" />
-                 <img src="https://images.unsplash.com/photo-1554342876-0ebcaecbed10?auto=format&fit=crop&q=80" alt="ig3" />
+                 <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=240&q=80" alt="ig1" />
+                 <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=240&q=80" alt="ig2" />
+                 <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=240&q=80" alt="ig3" />
                </div>
                <a href="#" className="hp-social-link">Instagram feed →</a>
             </div>
@@ -105,7 +81,7 @@ export default function HomePage({ navigate }) {
         <div className="container hp-tech-container">
           <div className="hp-tech-left">
             <h2>Modern Tech</h2>
-            <img src="https://images.unsplash.com/photo-1626245366964-e40f8987d605?auto=format&fit=crop&q=80" alt="Player" className="hp-tech-img" />
+            <img src="https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=1200&q=80" alt="Player" className="hp-tech-img" />
           </div>
           <div className="hp-tech-right">
              <div className="hp-tech-content">

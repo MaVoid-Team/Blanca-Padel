@@ -26,10 +26,10 @@ const productData = {
     "Thickness": "38mm"
   },
   images: [
-    "https://images.unsplash.com/photo-1622279457486-62dcc4a631d6?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1554342876-0ebcaecbed10?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1542144612-1b3641ec3459?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1583152288593-df767f4078c1?auto=format&fit=crop&q=80"
+    "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80"
   ],
   variants: [
     { label: "Weight", options: ["360g", "365g", "370g", "375g"] },
@@ -38,9 +38,9 @@ const productData = {
 };
 
 const similarProducts = [
-  { id: 2, name: 'Manhattan Power', price: '$250', image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a631d6?auto=format&fit=crop&q=80', rating: 4.9 },
-  { id: 3, name: 'Coronado Fast', price: '$240', image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a631d6?auto=format&fit=crop&q=80', rating: 4.6 },
-  { id: 4, name: 'Del Mar Starter', price: '$180', image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a631d6?auto=format&fit=crop&q=80', rating: 4.5 },
+  { id: 2, name: 'Manhattan Power', price: '$250', image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=80', rating: 4.9 },
+  { id: 3, name: 'Coronado Fast', price: '$240', image: 'https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=900&q=80', rating: 4.6 },
+  { id: 4, name: 'Del Mar Starter', price: '$180', image: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=900&q=80', rating: 4.5 },
 ];
 
 const reviews = [
@@ -99,7 +99,7 @@ export default function ProductDetailsPage({ navigate }) {
           <div style={{ fontSize: '12px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px', fontWeight: 600 }}>
             {productData.brand}
           </div>
-          <h1 className="title-xl" style={{ fontSize: '48px', marginBottom: '16px', color: 'var(--text-primary)' }}>{productData.name}</h1>
+          <h1 className="title-xl" style={{ marginBottom: '16px', color: 'var(--text-primary)' }}>{productData.name}</h1>
           
           {/* Ratings & Reviews */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
@@ -112,7 +112,7 @@ export default function ProductDetailsPage({ navigate }) {
 
           {/* Pricing */}
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px', marginBottom: '32px' }}>
-            <span style={{ fontSize: '32px', fontWeight: 800, color: 'var(--text-primary)' }}>${productData.price.toFixed(2)}</span>
+            <span style={{ fontWeight: 800, color: 'var(--text-primary)' }}>${productData.price.toFixed(2)}</span>
             {productData.originalPrice > productData.price && (
               <span style={{ fontSize: '18px', color: 'var(--text-secondary)', textDecoration: 'line-through' }}>${productData.originalPrice.toFixed(2)}</span>
             )}
@@ -130,35 +130,41 @@ export default function ProductDetailsPage({ navigate }) {
             <div key={variant.label} style={{ marginBottom: '24px' }}>
               <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '12px', color: 'var(--text-primary)' }}>{variant.label}: <span style={{ color: 'var(--text-secondary)', fontWeight: 400 }}>{selectedVariants[variant.label]}</span></div>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                {variant.options.map(opt => (
-                  <button 
-                    key={opt}
-                    onClick={() => setSelectedVariants({...selectedVariants, [variant.label]: opt})}
-                    style={{ 
-                      padding: '10px 20px', 
-                      borderRadius: '8px', 
-                      border: selectedVariants[variant.label] === opt ? '2px solid var(--accent-yellow)' : '1px solid rgba(255,255,255,0.1)',
-                      backgroundColor: selectedVariants[variant.label] === opt ? 'var(--accent-yellow)' : 'transparent',
-                      color: selectedVariants[variant.label] === opt ? '#090909' : 'var(--text-primary)',
-                      fontWeight: 600, fontSize: '13px', cursor: 'pointer', transition: 'all 0.2s'
-                    }}
-                  >
-                    {opt}
-                  </button>
-                ))}
+                {variant.options.map(opt => {
+                  const isSelected = selectedVariants[variant.label] === opt;
+
+                  return (
+                    <button 
+                      key={opt}
+                      onClick={() => setSelectedVariants({...selectedVariants, [variant.label]: opt})}
+                      aria-pressed={isSelected}
+                      style={{ 
+                        padding: '10px 20px', 
+                        borderRadius: '8px', 
+                        border: isSelected ? '2px solid var(--accent-cta)' : '1px solid var(--border-color)',
+                        backgroundColor: isSelected ? 'var(--accent-cta)' : 'var(--surface-color)',
+                        color: isSelected ? '#121212' : 'var(--text-primary)',
+                        boxShadow: isSelected ? '0 0 0 2px rgba(248, 210, 71, 0.2)' : 'none',
+                        fontWeight: 600, fontSize: '13px', cursor: 'pointer', transition: 'all 0.2s'
+                      }}
+                    >
+                      {opt}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           ))}
 
           {/* Actions: Quantity & Add to Cart */}
-          <div style={{ display: 'flex', gap: '16px', marginTop: '40px', marginBottom: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '999px', padding: '0 20px', height: '56px' }}>
+          <div className="cart-actions-wrapper">
+            <div className="quantity-control" style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '999px', padding: '0 20px', height: '56px' }}>
                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer', padding: '0 10px', color: 'var(--text-primary)' }}>-</button>
                <span style={{ fontSize: '16px', fontWeight: 600, width: '32px', textAlign: 'center', color: 'var(--text-primary)' }}>{quantity}</span>
                <button onClick={() => setQuantity(quantity + 1)} style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer', padding: '0 10px', color: 'var(--text-primary)' }}>+</button>
             </div>
             
-            <button className="pill-button" onClick={() => navigate('/cart')} style={{ flex: 1, backgroundColor: 'var(--text-primary)', color: 'var(--background-color)', height: '56px' }}>
+            <button className="pill-button add-to-cart-button" onClick={() => navigate('/cart')} style={{ backgroundColor: 'var(--text-primary)', color: 'var(--background-color)', height: '56px' }}>
               <span>Add to Cart - ${(productData.price * quantity).toFixed(2)}</span>
             </button>
           </div>
@@ -194,7 +200,7 @@ export default function ProductDetailsPage({ navigate }) {
            
            {/* Detailed Description */}
            <div>
-              <h2 className="title-md" style={{ fontSize: '32px', marginBottom: '24px', color: 'var(--text-primary)' }}>About this item</h2>
+              <h2 className="title-md" style={{ marginBottom: '24px', color: 'var(--text-primary)' }}>About this item</h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: '1.6', marginBottom: '32px' }}>
                 The Blanca La Jolla is crafted for players who dictate the pace of the game. Utilizing an advanced aerospace-grade carbon fiber lay-up, this racquet ensures that every touch is translated into pure kinetic energy, while minimizing structural vibrations to protect your arm during intense tournament play.
               </p>
@@ -206,7 +212,7 @@ export default function ProductDetailsPage({ navigate }) {
            
            {/* Technical Specs Table */}
            <div>
-              <h2 className="title-md" style={{ fontSize: '32px', marginBottom: '24px', color: 'var(--text-primary)' }}>Technical Specs</h2>
+              <h2 className="title-md" style={{ marginBottom: '24px', color: 'var(--text-primary)' }}>Technical Specs</h2>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                  {Object.entries(productData.specs).map(([key, value], idx) => (
                     <div key={key} style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', backgroundColor: idx % 2 === 0 ? 'rgba(0,0,0,0.2)' : 'transparent', borderRadius: idx % 2 === 0 ? '8px' : '0' }}>
@@ -220,7 +226,7 @@ export default function ProductDetailsPage({ navigate }) {
       </div>
 
       {/* 3. CUSTOMER REVIEWS */}
-      <div className="container" style={{ padding: '100px 0' }}>
+      <div className="container" style={{ paddingTop: '100px', paddingBottom: '100px' }}>
          <h2 className="title-md" style={{ fontSize: '40px', marginBottom: '64px', textAlign: 'center', color: 'var(--text-primary)' }}>Customer Reviews</h2>
          
          <div className="reviews-grid">
@@ -267,9 +273,9 @@ export default function ProductDetailsPage({ navigate }) {
       </div>
 
       {/* 4. SIMILAR PRODUCTS CAROUSEL */}
-      <div style={{ backgroundColor: 'var(--surface-color)', padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div style={{ backgroundColor: 'var(--surface-color)', paddingTop: '100px', paddingBottom: '100px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
          <div className="container">
-           <h2 className="title-md" style={{ fontSize: '32px', marginBottom: '48px', color: 'var(--text-primary)' }}>You might also like</h2>
+           <h2 className="title-md" style={{ marginBottom: '48px', color: 'var(--text-primary)' }}>You might also like</h2>
            
            <div className="collection-grid">
              {similarProducts.map(item => (

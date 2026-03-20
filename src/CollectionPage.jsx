@@ -1,10 +1,10 @@
 import React from 'react'
 
 const collections = [
-  { id: 1, name: 'Coronado', price: '$240', type: 'Performance', bgcolor: '#EAE1C0', image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a631d6?auto=format&fit=crop&q=80' },
-  { id: 2, name: 'La Jolla', price: '$225', type: 'Control', bgcolor: '#F1EDE2', image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a631d6?auto=format&fit=crop&q=80' },
-  { id: 3, name: 'Manhattan', price: '$250', type: 'Power', bgcolor: '#DDE4C7', image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a631d6?auto=format&fit=crop&q=80' },
-  { id: 4, name: 'Del Mar', price: '$230', type: 'All-around', bgcolor: '#85BABC', image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a631d6?auto=format&fit=crop&q=80' },
+  { id: 1, name: 'Coronado', price: '$240', type: 'Performance', bgcolor: '#EAE1C0', image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80' },
+  { id: 2, name: 'La Jolla', price: '$225', type: 'Control', bgcolor: '#F1EDE2', image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=900&q=80' },
+  { id: 3, name: 'Manhattan', price: '$250', type: 'Power', bgcolor: '#DDE4C7', image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80' },
+  { id: 4, name: 'Del Mar', price: '$230', type: 'All-around', bgcolor: '#85BABC', image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=80' },
 ]
 
 export default function CollectionPage({ navigate }) {
@@ -28,14 +28,7 @@ export default function CollectionPage({ navigate }) {
             <div className="product-image-card" style={{ backgroundColor: 'var(--surface-color)', border: '1px solid rgba(255,255,255,0.05)' }}>
                {item.name === 'Del Mar' ? (
                  <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ 
-                      fontFamily: 'serif', 
-                      fontSize: '64px', 
-                      color: 'var(--text-primary)', 
-                      fontWeight: 300,
-                      fontStyle: 'italic',
-                      opacity: 0.5
-                    }}>Del Mar</span>
+                    <span className="del-mar-text">Del Mar</span>
                  </div>
                ) : (
                  <img src={item.image} alt={item.name} style={{ mixBlendMode: 'normal' }} />
@@ -63,3 +56,4 @@ export default function CollectionPage({ navigate }) {
     </div>
   )
 }
+
