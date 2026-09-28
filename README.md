@@ -1,16 +1,35 @@
-# React + Vite
+# Blanca Padel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Minimal. Powerful. Intentional.
 
-Currently, two official plugins are available:
+Blanca is a premium padel racquet brand for players who want carbon-fiber performance without the loud graphics. This is the shopfront: dark, quiet, and built around the game — not around clutter.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Who it’s for
 
-## React Compiler
+- Clubs and serious players shopping control, power, and all-around racquets
+- Brands that need a high-end padel storefront (collection, product, cart, player proof)
+- Teams launching lifestyle commerce without a heavy CMS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What you get
 
-## Expanding the ESLint configuration
+- A pitch-black homepage with the Blanca story, carbon-fiber tech, and featured racquets
+- The collection — Coronado, La Jolla, Manhattan, Del Mar — split by performance, control, and power
+- Product detail for the La Jolla Pro Carbon: specs, weight/color variants, reviews
+- Player testimonials plus a checkout-ready cart
+- Live site: [blanca-padel.vercel.app](https://blanca-padel.vercel.app)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Try it
+
+[Open Blanca Padel](https://blanca-padel.vercel.app)
+
+Shop the racquets, open a paddle, and walk the cart. No login.
+
+## How it works
+
+Vite + React client routes for home, collection, product, players, and cart. The storefront *is* the product: California-named racquets, matte carbon copy, and a dark-to-light checkout surface. A small Express catalog API lives under `backend/` for later product wiring.
+
+---
+
+Built by [Ziad Ahmed](https://github.com/Ziad-NasrEldin) at [MaVoid](https://mavoid.com).
+
+[Website](https://mavoid.com) · [LinkedIn](https://linkedin.com/in/ziad-ahmed-634202332) · [GitHub](https://github.com/Ziad-NasrEldin)
